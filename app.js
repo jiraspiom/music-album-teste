@@ -1,6 +1,5 @@
 const { Client } = require("discord.js");
 const { Player } = require("discord-player");
-const { prefix, token } = require("./config.json");
 
 const client = new Client({
   restTimeOffset: 0,
@@ -28,12 +27,12 @@ require("./envents")(client);
 
 client.on("messageCreate", (msg) => {
   if (!msg.guild || msg.author.bot) return;
-  if (!msg.content.startsWith(prefix)) return;
+  if (!msg.content.startsWith(process.env.PREFIX)) return;
 
-  const args = msg.content.slice(prefix.length).trim().split(/ +/);
+  const args = msg.content.slice(process.env.PREFIX.length).trim().split(/ +/);
   const command = args.shift().toLowerCase();
   console.log("pegou comando")
   require("./commands")(client, msg, args, command);
 });
 
-client.login(token);
+client.login(process.env.TOKEN);
