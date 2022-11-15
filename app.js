@@ -18,7 +18,7 @@ const player = new Player(client, {
 });
 
 client.on("ready", () => {
-  console.log("bot is already activated 🤖");
+  console.log("bot is already activated uai. 🤖");
   client.user.setActivity("Suas musica...", { type: "LISTENING" });
 });
 
